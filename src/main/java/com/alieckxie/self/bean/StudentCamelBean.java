@@ -25,6 +25,7 @@ public class StudentCamelBean {
 	}
 
 	public void setsName(String sName) {
+		System.out.println("--------调用了StudentCamelBean的sName的setter（sName）--------");
 		this.sName = sName;
 	}
 
@@ -34,6 +35,7 @@ public class StudentCamelBean {
 	}
 
 	public void setsAge(Integer sAge) {
+		System.out.println("--------调用了StudentCamelBean的sAge的setter（sAge）--------");
 		this.sAge = sAge;
 	}
 
@@ -43,6 +45,7 @@ public class StudentCamelBean {
 	}
 
 	public void setsComment(String sComment) {
+		System.out.println("--------调用了StudentCamelBean的sComment的setter（sComment）--------");
 		this.sComment = sComment;
 	}
 

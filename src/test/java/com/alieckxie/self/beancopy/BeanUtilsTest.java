@@ -1,6 +1,9 @@
 package com.alieckxie.self.beancopy;
 
+import java.beans.BeanInfo;
 import java.beans.IntrospectionException;
+import java.beans.Introspector;
+import java.beans.PropertyDescriptor;
 import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -10,13 +13,54 @@ import java.util.Set;
 
 import org.junit.Test;
 import org.springframework.beans.BeanUtils;
+import org.springframework.cglib.core.ReflectUtils;
 
 import com.alieckxie.self.bean.StudentBean;
 import com.alieckxie.self.bean.StudentCamelBean;
+import com.alieckxie.self.bean.StudentCamelBeanDiffPropType;
 import com.alieckxie.self.bean.TeacherBean;
 import com.alieckxie.self.util.SelfBeanUtils;
 
 public class BeanUtilsTest {
+	
+	@Test
+	public void testReflectUtilGetGetter() {
+		PropertyDescriptor[] getters = ReflectUtils.getBeanGetters(StudentCamelBeanDiffPropType.class);
+		for (PropertyDescriptor propertyDescriptor : getters) {
+			System.out.println("getPropertyType:" + propertyDescriptor.getPropertyType());
+			System.out.println("getName:" + propertyDescriptor.getName());
+			System.out.println("getDisplayName:" + propertyDescriptor.getDisplayName());
+			System.out.println("getReadMethod:" + propertyDescriptor.getReadMethod());
+			System.out.println("getWriteMethod:" + propertyDescriptor.getWriteMethod());
+			System.out.println("====================================");
+		}
+		System.out.println("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
+		PropertyDescriptor[] setters = ReflectUtils.getBeanSetters(StudentCamelBeanDiffPropType.class);
+		for (PropertyDescriptor propertyDescriptor : setters) {
+			System.out.println("getPropertyType:" + propertyDescriptor.getPropertyType());
+			System.out.println("getName:" + propertyDescriptor.getName());
+			System.out.println("getDisplayName:" + propertyDescriptor.getDisplayName());
+			System.out.println("getReadMethod:" + propertyDescriptor.getReadMethod());
+			System.out.println("getWriteMethod:" + propertyDescriptor.getWriteMethod());
+			System.out.println("====================================");
+		}
+	}
+	
+	@Test
+	public void testIntrospector() throws IntrospectionException {
+		BeanInfo beanInfo = Introspector.getBeanInfo(StudentCamelBeanDiffPropType.class);
+		PropertyDescriptor[] propertyDescriptors = beanInfo.getPropertyDescriptors();
+		for (PropertyDescriptor propertyDescriptor : propertyDescriptors) {
+			System.out.println("getPropertyType:" + propertyDescriptor.getPropertyType());
+			System.out.println("getName:" + propertyDescriptor.getName());
+			System.out.println("getDisplayName:" + propertyDescriptor.getDisplayName());
+			System.out.println("getReadMethod:" + propertyDescriptor.getReadMethod());
+			System.out.println("getWriteMethod:" + propertyDescriptor.getWriteMethod());
+			System.out.println("====================================");
+		}
+		// Introspector是有缓存的，所以可以一直使用
+		BeanInfo beanInfo2 = Introspector.getBeanInfo(StudentCamelBeanDiffPropType.class);
+	}
 	
 	@Test
 	public void testMap2Bean() throws IllegalAccessException, InvocationTargetException, IntrospectionException {

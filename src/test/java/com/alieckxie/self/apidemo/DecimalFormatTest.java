@@ -1,6 +1,7 @@
 package com.alieckxie.self.apidemo;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.text.DecimalFormat;
 
 import org.junit.Test;
@@ -12,7 +13,7 @@ public class DecimalFormatTest {
 
 		// ---------------------------------------------
 		// 定义一个数字格式化对象，格式化模板为".##"，即保留2位小数.
-		DecimalFormat a = new DecimalFormat(".##");
+		DecimalFormat a = new DecimalFormat("+,##0.##;-,##0.##");
 		String s = a.format(333.335);
 		System.err.println(s);
 		// 说明：如果小数点后面不够2位小数，不会补零.参见Rounding小节
@@ -21,7 +22,7 @@ public class DecimalFormatTest {
 		// -----------------------------------------------
 		// 可以在运行时刻用函数applyPattern(String)修改格式模板
 		// 保留2位小数，如果小数点后面不够2位小数会补零
-		a.applyPattern(",##0.");
+		a.applyPattern("0.00");
 		s = a.format(333);
 		System.err.println("----"+s);
 		// ------------------------------------------------
@@ -69,4 +70,15 @@ public class DecimalFormatTest {
 		a.applyPattern(pattern);
 		System.out.println(a.format(1223233.456));
 	}
+	
+	@Test
+	public void testRound() {
+		BigDecimal decimal = new BigDecimal(1265000);
+		DecimalFormat format = new DecimalFormat(",##0.00");
+		format.setRoundingMode(RoundingMode.HALF_UP);
+		BigDecimal divide = decimal.divide(new BigDecimal(1000000));
+		System.out.println(divide);
+		System.out.println(format.format(divide));
+	}
+	
 }

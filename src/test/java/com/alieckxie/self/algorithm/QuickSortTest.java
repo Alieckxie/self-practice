@@ -43,10 +43,10 @@ public class QuickSortTest {
 
 	public static int[] generateRandomArray() {
 		Random random = new Random();
-		int length = 10 + random.nextInt(90);
+		int length = 100000;
 		int[] array = new int[length];
 		for (int i = 0; i < length; i++) {
-			array[i] = random.nextInt(100);
+			array[i] = random.nextInt(10000000);
 		}
 		return array;
 	}

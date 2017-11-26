@@ -1,5 +1,10 @@
 package com.alieckxie.self.beancopy;
 
+import java.lang.reflect.InvocationTargetException;
+import java.util.HashMap;
+import java.util.Map;
+
+import org.apache.commons.beanutils.BeanUtils;
 import org.junit.Test;
 import org.springframework.cglib.beans.BeanCopier;
 import org.springframework.cglib.core.Converter;
@@ -24,6 +29,15 @@ public class BeanCopierTest {
 		}
 		System.out.println("拷贝用时：" + (System.currentTimeMillis() - start));
 		System.out.println(camelBean2);
+//		Map<String,Object> map = new HashMap<String, Object>();
+//		try {
+//			BeanUtils.copyProperties(map, camelBean);
+//		} catch (IllegalAccessException | InvocationTargetException e) {
+//		}
+//		BeanCopier create = BeanCopier.create(map.getClass(), StudentCamelBean.class, false);
+//		StudentCamelBean camelBean3 = new StudentCamelBean();
+//		create.copy(map, camelBean3, null);
+//		System.out.println("camelBean3:" + camelBean3);
 	}
 
 	@Test
@@ -33,8 +47,20 @@ public class BeanCopierTest {
 		StudentCamelBeanDiffPropType camelBean2 = new StudentCamelBeanDiffPropType();
 		System.out.println(camelBean2);
 		copy.copy(camelBean, camelBean2, null);
+		System.out.println(camelBean);
 		System.out.println(camelBean2);
 	}
+	
+//	@Test
+//	public void testBeanCopierDiffPropTypeReserve() {
+//		BeanCopier copy = BeanCopier.create(StudentCamelBeanDiffPropType.class, StudentCamelBean.class, false);
+//		StudentCamelBeanDiffPropType camelBean = new StudentCamelBeanDiffPropType("alieckxie", 25, "天气不错");
+//		StudentCamelBean camelBean2 = new StudentCamelBean();
+//		System.out.println(camelBean2);
+//		copy.copy(camelBean, camelBean2, null);
+//		System.out.println(camelBean);
+//		System.out.println(camelBean2);
+//	}
 
 	@Test
 	public void testBeanCopierConverterType() {
@@ -55,6 +81,9 @@ public class BeanCopierTest {
 				System.out.println("=====================");
 				System.out.println("转换结束");
 				System.out.println();
+				if(p1 == Integer.class){
+					return 999;
+				}
 				return p0;
 			}
 		});

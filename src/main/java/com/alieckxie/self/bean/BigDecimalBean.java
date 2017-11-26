@@ -32,4 +32,9 @@ public class BigDecimalBean {
 		this.decimalC = decimalC;
 	}
 
+	@Override
+	public String toString() {
+		return "BigDecimalBean [decimalA=" + decimalA + ", decimalB=" + decimalB + ", decimalC=" + decimalC + "]";
+	}
+
 }
