@@ -94,8 +94,8 @@ public class LoopEfficiencyTest {
 		System.out.println("Loop4中，A的长度为：" + A.length() + ",B的长度为：" + B.length() + ",C的长度为：" + C.length());
 	}
 	
-	private static final int rounds = 100000;
-	private static final int size = 5000;
+	private static final int rounds = 100;
+	private static final int size = 50000;
 	
 	public LinkedList<Map<String, Object>> getTestList() {
 		LinkedList<Map<String,Object>> list = new LinkedList<Map<String, Object>>();
@@ -212,11 +212,12 @@ public class LoopEfficiencyTest {
 			e.printStackTrace();
 		}
 		testLoopConcrete1();
-		System.out.println("============================");
+		System.out.println("1============================1");
 		testLoopConcrete2();
-		System.out.println("============================");
+		System.out.println("2============================2");
 		testLoopConcrete1();
-		System.out.println("============================");
+		System.out.println("1============================1");
 		testLoopConcrete2();
+		System.out.println("2============================2");
 	}
 }

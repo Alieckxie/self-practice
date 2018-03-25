@@ -9,7 +9,7 @@ public class ThreadDebugTest {
 		new Thread("Alieckxie") {
 			@Override
 			public void run() {
-				for (int i = 0; i < 50; i++) {
+				for (int i = 0; i < 10; i++) {
 					System.out.println("这里是" + this.getName() + "线程第【" + i + "】次输出，接着将休眠1秒");
 					try {
 						Thread.sleep(1000);
@@ -20,7 +20,7 @@ public class ThreadDebugTest {
 				}
 			}
 		}.start();
-		for (int i = 0; i < 50; i++) {
+		for (int i = 0; i < 10; i++) {
 			System.out.println("这里是主线程第【" + i + "】次输出，接着将休眠1秒");
 			Thread.sleep(1000);
 		}

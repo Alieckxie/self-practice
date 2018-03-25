@@ -68,7 +68,7 @@ public class ScheduleThreadPoolTest {
 			e.printStackTrace();
 		}
 		System.out.println(object);
-		Thread.sleep(Long.MAX_VALUE);
+		Thread.sleep(30000);
 	}
 	
 	@Test

@@ -45,6 +45,9 @@ public class WeakHashMapTest {
 				Thread.sleep(100);
 			} catch (InterruptedException e) {
 			}
+			if (count == 101) {
+				break;
+			}
 		}
 	}
 	

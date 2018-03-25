@@ -45,10 +45,10 @@ public class EqualsAndHashMapEfficiencyTest {
 		map.put("gfsdgfs", 3);
 		map.put("fdasvczvdsf", 4);
 		map.put("ayterhgd", 5);
-//		map.put("bvcxnbxbx", 6);
-//		map.put("q4tre2trw@43154$", 7);
-//		map.put("avczvcz", 8);
-//		map.put("kjghipyio", 9);
+		map.put("bvcxnbxbx", 6);
+		map.put("q4tre2trw@43154$", 7);
+		map.put("avczvcz", 8);
+		map.put("kjghipyio", 9);
 		long start = System.nanoTime();
 		for (int i = 0; i < counts; i++) {
 			Integer integer = map.get(a);

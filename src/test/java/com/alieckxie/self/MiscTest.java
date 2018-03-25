@@ -8,6 +8,9 @@ import java.util.List;
 
 import org.junit.Test;
 
+import com.alieckxie.self.consts.CommonConsts;
+import com.alieckxie.self.consts.Day;
+
 public class MiscTest {
 
 	@Test
@@ -38,6 +41,15 @@ public class MiscTest {
 		BigDecimal bigDecimal = BigDecimal.valueOf(3.2100);
 		BigDecimal divide = bigDecimal.divide(new BigDecimal(1), 4, RoundingMode.HALF_UP);
 		System.out.println(divide.toPlainString());
+	}
+	
+	@Test
+	public void testEnum() {
+		System.out.println(Day.FRIDAY.getDesc());
+//		Day.FRIDAY.setDesc("ASD");
+		System.out.println(Day.FRIDAY.getDesc());
+		System.out.println(Day.FRIDAY.ordinal());
+		System.out.println(CommonConsts.TradingMethod.ODM);
 	}
 
 }
