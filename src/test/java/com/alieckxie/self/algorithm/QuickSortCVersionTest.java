@@ -9,16 +9,20 @@ public class QuickSortCVersionTest {
 	@Test
 	public void testQuickSortCVersion() {
 		int[] array = QuickSortTest.generateRandomArray();
-		System.out.println(Arrays.toString(array));
+		System.out.println("========"+Arrays.toString(array));
 		quicksort(array, 0, array.length - 1);
-		System.out.println(Arrays.toString(array));
+		System.out.println("========"+Arrays.toString(array));
 	}
 
 	public void quicksort(int[] array, int left, int right) {
 		int pivot_index; // 基准的索引
 		if (left < right) {
+			System.out.println("开始进行中枢轴处理：###");
 			pivot_index = partition(array, left, right);
+			System.out.println("********"+Arrays.toString(array));
+			System.out.println("开始处理左侧数据：+++");
 			quicksort(array, left, pivot_index - 1);
+			System.out.println("开始处理右侧数据：---");
 			quicksort(array, pivot_index + 1, right);
 		}
 
@@ -29,9 +33,9 @@ public class QuickSortCVersionTest {
 		int tail = left - 1; // tail为小于基准的子数组最后一个元素的索引
 		for (int i = left; i < right; i++) { // 遍历基准以外的其他元素
 			if (array[i] <= pivot) { // 把小于等于基准的元素放到前一个子数组中
-
+				System.out.println(i + "位 " + array[i] + "<=" + pivot + "把小于等于基准的元素放到前一个子数组中");
 				tail++;
-				swap(array, tail, i);
+//				swap(array, tail, i);
 			}
 		}
 		swap(array, tail + 1, right); // 最后把基准放到前一个子数组的后边,剩下的子数组既是大于基准的子数组
@@ -43,6 +47,8 @@ public class QuickSortCVersionTest {
 		int temp = array[i];
 		array[i] = array[j];
 		array[j] = temp;
+		System.out.print(j + "位：" + array[i] + " 与 " + i + "位：" + + array[j] + "互换 ");
+		System.out.println(Arrays.toString(array));
 	}
 
 	public <T> void swap(T[] array, int i, int j) {
